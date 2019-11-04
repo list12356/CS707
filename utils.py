@@ -12,13 +12,13 @@ def imshow(img):
     img = img.numpy().transpose((1, 2, 0))
     img = std * img + mean
     img = np.clip(img, 0, 1)
-    plt.imshow(np.transpose(img, (1, 2, 0)))
+    plt.imshow(img)
     plt.show()
 
-def random_save(inputs, num, filename):
-    index = np.random.choice(inputs.shape[0], num, replace=False)  
-    img = torchvision.utils.make_grid(inputs[index])
+def imsave(img, filename):
+    img = torchvision.utils.make_grid(img, nrow=4, padding=2)
     img = img.numpy().transpose((1, 2, 0))
     img = std * img + mean
-    im = Image.fromarray(img)
+    img = np.clip(img, 0, 1)
+    im = Image.fromarray((img*255).astype(np.uint8))
     im.save(filename)

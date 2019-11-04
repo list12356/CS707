@@ -2,7 +2,7 @@ import torch.nn as nn
 
 class SimpleNet(nn.Module):
   # a simple CNN for image classifcation
-  def __init__(self, conv_op=nn.Conv2d, num_classes=100):
+  def __init__(self, conv_op=nn.Conv2d, num_classes=10):
     super(SimpleNet, self).__init__()
     # you can start from here and create a better model
     self.features = nn.Sequential(
